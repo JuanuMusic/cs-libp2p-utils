@@ -1,17 +1,17 @@
 ﻿using System;
 using LibP2P.Utilities.Extensions;
-using Xunit;
+using NUnit.Framework;
 
 namespace LibP2P.Utilities.Tests
 {
     public class TupleTests
     {
-        [Fact]
+        [Test]
         public void Swap_GivenTwoValues_ReturnsSwappedTuple()
         {
             var tuple = Tuple.Create(1, 2);
             
-            Assert.Equal(tuple.Swap(), Tuple.Create(2, 1));
+            Assert.AreEqual(tuple.Swap(), Tuple.Create(2, 1));
         }
     }
 }

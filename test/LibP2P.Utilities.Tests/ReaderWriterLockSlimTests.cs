@@ -1,16 +1,16 @@
-﻿using Xunit;
+﻿using NUnit.Framework;
 
 namespace LibP2P.Utilities.Tests
 {
     public class ReaderWriterLockSlimTests
     {
-        [Fact]
+        [Test]
         public void Read_CanTimeout()
         {
             // TODO
         }
 
-        [Fact]
+        [Test]
         public void Write_CanTimeout()
         {
             // TODO

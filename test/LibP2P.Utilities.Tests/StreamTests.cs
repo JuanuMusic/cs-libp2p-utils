@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using LibP2P.Utilities.Extensions;
-using Xunit;
+using NUnit.Framework;
 
 namespace LibP2P.Utilities.Tests
 {
@@ -17,7 +17,7 @@ namespace LibP2P.Utilities.Tests
             }
         }
 
-        [Fact]
+        [Test]
         public void AsReader_GivenMemoryStream_CanReadAll()
         {
             var bytes = new byte[4096];
@@ -28,12 +28,12 @@ namespace LibP2P.Utilities.Tests
                 var buffer = new byte[bytes.Length];
                 var bytesRead = reader.ReadFull(buffer);
 
-                Assert.Equal(bytesRead, bytes.Length);
-                Assert.Equal(buffer, bytes);
+                Assert.AreEqual(bytesRead, bytes.Length);
+                Assert.AreEqual(buffer, bytes);
             }
         }
 
-        [Fact]
+        [Test]
         public async Task AsReader_GivenMemoryStream_CanReadAllAsync()
         {
             var bytes = new byte[4096];
@@ -44,12 +44,12 @@ namespace LibP2P.Utilities.Tests
                 var buffer = new byte[bytes.Length];
                 var bytesRead = await reader.ReadFullAsync(buffer);
 
-                Assert.Equal(bytesRead, bytes.Length);
-                Assert.Equal(buffer, bytes);
+                Assert.AreEqual(bytesRead, bytes.Length);
+                Assert.AreEqual(buffer, bytes);
             }
         }
 
-        [Fact]
+        [Test]
         public void AsWriter_GivenMemoryStream_CanWriteAll()
         {
             using (var memory = new MemoryStream())
@@ -59,11 +59,11 @@ namespace LibP2P.Utilities.Tests
                 GenerateRandomBytes(bytes);
                 writer.Write(bytes, 0, bytes.Length);
 
-                Assert.Equal(memory.ToArray(), bytes);
+                Assert.AreEqual(memory.ToArray(), bytes);
             }
         }
 
-        [Fact]
+        [Test]
         public async Task AsWriter_GivenMemoryStream_CanWriteAllAsync()
         {
             using (var memory = new MemoryStream())
@@ -73,7 +73,7 @@ namespace LibP2P.Utilities.Tests
                 GenerateRandomBytes(bytes);
                 await writer.WriteAsync(bytes, 0, bytes.Length, CancellationToken.None);
 
-                Assert.Equal(memory.ToArray(), bytes);
+                Assert.AreEqual(memory.ToArray(), bytes);
             }
         }
     }
